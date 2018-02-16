@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'maven fabric8:build'
+        sh 'mvn fabric8:build'
       }
     }
     stage('Deploy and Test') {
