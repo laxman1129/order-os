@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'mvn fabric8:build'
+        sh 'mvn clean package'
       }
     }
   }
