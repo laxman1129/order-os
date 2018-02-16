@@ -18,7 +18,8 @@ pipeline {
      // sh './mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
      
    // }
-      sh './mvnw sonarqube'     
+     // sh './mvnw sonarqube'     
+      sh './mvnw sonar:sonar'     
       }
     }
     stage('package') {
