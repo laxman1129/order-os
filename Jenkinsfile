@@ -12,13 +12,13 @@ pipeline {
       }
     }
     stage('sonarqube') {
-     // steps {
-       // withSonarQubeEnv('My SonarQube Server') {
+      steps {
+        withSonarQubeEnv('My SonarQube Server') {
       // requires SonarQube Scanner for Maven 3.2+
-     // sh './mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+      sh './mvnw verify sonar:sonar -Dintegration-tests.skip=true -Dmaven.test.failure.ignore=true'
      
-   // }
-      sh './mvnw sonarqube'     
+    }
+     // sh './mvnw sonarqube'     
      // sh './mvnw sonar:sonar'     
       }
     }
