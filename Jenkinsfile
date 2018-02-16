@@ -7,22 +7,10 @@ pipeline {
       }
     }
     stage('install') {
-      parallel {
-        stage('install') {
-          steps {
-            sh './mvnw install'
-          }
-        }
-        stage('sonarqube') {
-          steps {
-            sh './mvnw sonarqube'
-          }
-        }
-        stage('package') {
-          steps {
-            sh './mvnw package'
-          }
-        }
+      steps {
+        sh '''./mvnw install
+./mvnw sonarqube
+./mvnw package'''
       }
     }
     stage('deploy') {
