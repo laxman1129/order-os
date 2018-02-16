@@ -1,18 +1,34 @@
 pipeline {
-  agent {
-    node {
-      label 'maven'
-    }
-    
-  }
+  agent any
   stages {
     stage('build') {
       steps {
-        sh 'mvn clean package'
+        sh './mvnw clean '
       }
     }
-  }
-  environment {
-    maven = 'maven'
+    stage('install') {
+      parallel {
+        stage('install') {
+          steps {
+            sh './mvnw install'
+          }
+        }
+        stage('sonarqube') {
+          steps {
+            sh './mvnw sonarqube'
+          }
+        }
+        stage('package') {
+          steps {
+            sh './mvnw package'
+          }
+        }
+      }
+    }
+    stage('deploy') {
+      steps {
+        sh './mvnw deploy'
+      }
+    }
   }
 }
