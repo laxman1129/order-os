@@ -8,9 +8,22 @@ pipeline {
     }
     stage('install') {
       steps {
-        sh '''./mvnw install
-./mvnw sonarqube
-./mvnw package'''
+        sh './mvnw install'
+      }
+    }
+    stage('sonarqube') {
+      steps {
+        sh './mvnw sonarqube'
+      }
+    }
+    stage('package') {
+      steps {
+        sh './mvnw package'
+      }
+    }
+    stage('confirm') {
+      steps {
+        echo 'do you want to deploy'
       }
     }
     stage('deploy') {
