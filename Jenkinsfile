@@ -22,11 +22,11 @@ pipeline {
     //  sh './mvnw sonar:sonar'     
       //}
     //}
-    stage('package') {
-      steps {
-        sh './mvnw package'
-      }
-    }
+    //stage('package') {
+   //   steps {
+     //   sh './mvnw package'
+     // }
+    //}
     stage('confirm') {
       steps {
         echo 'do you want to deploy'
