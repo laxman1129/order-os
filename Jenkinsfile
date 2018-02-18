@@ -11,7 +11,7 @@ pipeline {
         sh './mvnw install'
       }
     }
-    stage('sonarqube') {
+   // stage('sonarqube') {
       //steps {
         //withSonarQubeEnv('My SonarQube Server') {
       // requires SonarQube Scanner for Maven 3.2+
@@ -19,9 +19,9 @@ pipeline {
      
     //}
      // sh './mvnw sonarqube'     
-      sh './mvnw sonar:sonar'     
-      }
-    }
+    //  sh './mvnw sonar:sonar'     
+      //}
+    //}
     stage('package') {
       steps {
         sh './mvnw package'
